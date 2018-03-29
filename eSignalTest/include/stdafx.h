@@ -24,6 +24,10 @@
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QTableView>
+#include <QtWidgets/QTreeView>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QSplitter>
+#include <QFileSystemModel>
 #include <QMessageBox>
 #include <QTextCodec>
 #include <QAbstractListModel>
@@ -125,6 +129,12 @@ using std::size_t;
 #define theApp static_cast<Application*>(Application::instance())
 
 #define MAKE_STRING(Any) #Any
+
+#ifdef QT_DEBUG
+#define VERIFY(Connection) ASSERT(Connection)
+#else
+#define VERIFY(Connection) Connection
+#endif
 
 #ifndef QT_DEBUG
 #define PRODUCTION

@@ -1,7 +1,10 @@
 #include "application.h"
 
-//int main(int argc, char*argv[])
-int main(int, char*)
+int main(int argc, char*argv[])
 {
-	return 0;
+	using namespace eSignalTest;
+
+	Application app(argc, argv);
+
+	return app.exec();
 }
