@@ -4,6 +4,9 @@ project(${AppName})
 set(AppSourcesDir src)
 set(AppHeadersDir include)
 
+# deps headers
+set(StatisticEngineLibHeaderDir ../statisticEngine/include)
+
 aux_source_directory(${AppSourcesDir} AppSourcesList)
 file(GLOB_RECURSE AppCppList "src/*.cpp")
 file(GLOB_RECURSE AppHeadersList "include/*.h")
@@ -75,11 +78,13 @@ endif()
 
 include_directories(
 	${AppHeadersDir}
+	${StatisticEngineLibHeaderDir}
 	${CMAKE_CURRENT_BINARY_DIR}
 )
 
 target_link_libraries(
 	${AppName}
+	${StatisticEngineName}
 	Qt5::Widgets
 	Qt5::PrintSupport
 )

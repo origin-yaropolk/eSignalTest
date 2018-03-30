@@ -1,5 +1,10 @@
 #pragma once
 
+namespace StatisticEngine
+{
+	class StatisticEngine;
+}
+
 namespace eSignalTest
 {
 
@@ -19,6 +24,7 @@ private:
 
 private:
 	std::unique_ptr<MainWindow> m_mainWindow;
+	StatisticEngine::StatisticEngine* m_statisticEngine;
 };
 
 }

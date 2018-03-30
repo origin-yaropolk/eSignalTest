@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 2.8.11)
 
 set(AppName eSignalTest)
+set(StatisticEngineName statisticEngine)
 
 project(${AppName})
 
@@ -40,3 +41,4 @@ MACRO(add_msvc_precompiled_header PrecompiledHeader PrecompiledSource SourcesVar
 ENDMACRO(add_msvc_precompiled_header)
 
 add_subdirectory(${AppName})
+add_subdirectory(${StatisticEngineName})
