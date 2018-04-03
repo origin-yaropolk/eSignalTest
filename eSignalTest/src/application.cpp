@@ -25,8 +25,18 @@ void Application::showMainWindow()
 	m_mainWindow->showMaximized();
 }
 
-	Application::~Application()
+Application::~Application()
 {
+}
+
+StatisticEngine::StatisticEngine* Application::statisticEngine()
+{
+	return m_statisticEngine;
+}
+
+void Application::providePathToEngine(const QModelIndex& index)
+{
+	m_statisticEngine->startCalculation(index.data(QFileSystemModel::FilePathRole).toString());
 }
 
 }

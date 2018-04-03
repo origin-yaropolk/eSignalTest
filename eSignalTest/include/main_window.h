@@ -1,4 +1,10 @@
 #pragma once
+#include "statistic_engine.h"
+
+namespace  StatisticEngine
+{
+	class StatisticEngine;
+}
 
 namespace eSignalTest
 {
@@ -12,6 +18,8 @@ class MainWindow : public QMainWindow
 public:
 	MainWindow(QWidget* parent = nullptr);
 
+public slots:
+	void handleStateChanged();
 
 private:
 	ContentFrame* m_contentFrame;

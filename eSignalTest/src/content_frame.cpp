@@ -7,7 +7,7 @@ ContentFrame::ContentFrame(QWidget* parent)
 	: QFrame(parent)
 	, m_fileSystemTreeView(new QTreeView(this))
 	, m_fileSystemTreeModel(new QFileSystemModel(this))
-	, m_infoLabel(new QLabel(this))
+	, m_infoTextEdit(new QTextEdit(this))
 	, m_splitter(new QSplitter(this))
 {
 	QHBoxLayout* layout = new QHBoxLayout(this);
@@ -16,20 +16,26 @@ ContentFrame::ContentFrame(QWidget* parent)
 	m_splitter->setChildrenCollapsible(false);
 
 	m_splitter->addWidget(m_fileSystemTreeView);
-	m_splitter->addWidget(m_infoLabel);
+	m_splitter->addWidget(m_infoTextEdit);
 	layout->addWidget(m_splitter);
 	setLayout(layout);
 
-	m_fileSystemTreeModel->setRootPath(QDir::currentPath());
+	m_fileSystemTreeModel->setRootPath(QDir::rootPath());
 	m_fileSystemTreeView->setModel(m_fileSystemTreeModel);
-
-	connect(m_fileSystemTreeView->selectionModel(), SIGNAL(currentChanged(const QModelIndex&, const QModelIndex &)), 
-		this, SLOT(setInfoText(const QModelIndex&)));
 }
 
-void ContentFrame::setInfoText(const QModelIndex& index)
+QTreeView* ContentFrame::fileSystemTreeView() const
 {
-	m_infoLabel->setText(index.data(QFileSystemModel::FilePathRole).toString());
+	return m_fileSystemTreeView;
+}
+
+void ContentFrame::setInfoText(QStringList list)
+{
+	m_infoTextEdit->clear();
+	foreach(auto string, list)
+	{
+		m_infoTextEdit->append(string);
+	}
 }
 
 }

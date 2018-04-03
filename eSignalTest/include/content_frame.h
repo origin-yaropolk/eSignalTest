@@ -10,13 +10,15 @@ class ContentFrame : public QFrame
 public:
 	ContentFrame(QWidget* parent = nullptr);
 
-private slots:
-	void setInfoText(const QModelIndex& index);
+	QTreeView* fileSystemTreeView() const;
+
+public slots:
+	void setInfoText(QStringList list);
 
 private:
 	QTreeView* m_fileSystemTreeView;
 	QFileSystemModel* m_fileSystemTreeModel;
-	QLabel* m_infoLabel;
+	QTextEdit* m_infoTextEdit;
 	QSplitter* m_splitter;
 };
 

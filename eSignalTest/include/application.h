@@ -18,6 +18,11 @@ public:
 	Application(int& argc, char* argv[]);
 	~Application();
 
+	StatisticEngine::StatisticEngine* statisticEngine();
+
+public slots:
+	void providePathToEngine(const QModelIndex&);
+
 private:
 	void initialize();
 	void showMainWindow();
